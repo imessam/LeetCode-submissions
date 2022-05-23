@@ -9,7 +9,6 @@ public:
         max = arr[mid];
         
         while(((mid-1) >=0 && max<arr[mid-1]) || ((mid+1) < arr.size() && max < arr[mid+1])){
-            cout<<low<<" , "<<mid<<" , "<<high<<endl;
             if(((mid-1) >=0 && max<arr[mid-1]))
                 high = mid-1;
             else
