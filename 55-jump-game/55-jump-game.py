@@ -2,9 +2,6 @@ class Solution:
     def canJump(self, nums: List[int]) -> bool:
     
         n = len(nums)
-        dp = [False]*n
-        
-        dp[n-1] = True
         
         leastBestIdx = n-1
         
@@ -13,6 +10,5 @@ class Solution:
             
             if i+nums[i] >= leastBestIdx:
                 leastBestIdx = i
-                dp[i] = True
         
-        return dp[0]
+        return leastBestIdx == 0
