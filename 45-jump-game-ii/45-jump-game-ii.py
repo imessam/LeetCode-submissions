@@ -15,7 +15,7 @@ class Solution:
             if i+nums[i] >= leastBestIdx:
                 leastBestIdx = i
                 dp[i] = True
-        print(dp)        
+                
         @cache
         def minJumps(sr):
             
