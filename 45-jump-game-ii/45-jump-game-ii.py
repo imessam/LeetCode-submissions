@@ -3,35 +3,30 @@ class Solution:
         
         n = len(nums)
         count = 0
-        dp = [False]*n
+        dp = [-1]*n
         
-        dp[n-1] = True
+        dp[n-1] = 0
         
         leastBestIdx = n-1
         
         
         for i in range(n-2,-1,-1):
             
-            if i+nums[i] >= leastBestIdx:
-                leastBestIdx = i
-                dp[i] = True
-                
-        @cache
-        def minJumps(sr):
             
-            if sr >= (n-1):
-                return 0
-
-            minJump = n
-
-            for i in range(nums[sr],0,-1):
-
-                if (sr+i) < len(dp) and dp[sr+i] == True:
-                    minJump = min(minJump,minJumps(sr+i))
-
-            return 1+minJump
-        
-        return minJumps(0)
+            if i+nums[i] >= leastBestIdx:
+                if i+nums[i] == leastBestIdx:
+                    dp[i] = 1+dp[leastBestIdx]
+                elif i+nums[i] >= n-1:
+                    dp[i] = 1
+                else:
+                    mnm = n
+                    for j in range(i+nums[i],leastBestIdx-1,-1):
+                        if dp[j] != -1:
+                            mnm = min(mnm,dp[j])
+                    dp[i] = 1+mnm
+                leastBestIdx = i
+            
+        return dp[0]
         
         
                 
