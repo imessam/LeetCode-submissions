@@ -19,6 +19,7 @@ class Solution {
             amount = robbing(nums,dp,i,nums.length-1);
             mxm2 = amount>mxm2?amount:mxm2;
         }
+        
         return Math.max(mxm1,mxm2);
     }
     public int robbing(int []nums,HashMap<Integer,Integer> dp,int begin,int end){
