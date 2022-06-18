@@ -14,7 +14,6 @@ class Solution:
             window += haystack[i]
         
         for i in range(len(needle),len(haystack)):
-# /            print(window,i-len(needle))
             
             if window == needle:
                 return i-len(needle)
