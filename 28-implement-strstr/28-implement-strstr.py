@@ -10,8 +10,10 @@ class Solution:
         
         window = ""
         
-        for i in range(len(needle)):
-            window += haystack[i]
+        # for i in range(len(needle)):
+        #     window += haystack[i]
+        
+        window = haystack[:len(needle)]
         
         for i in range(len(needle),len(haystack)):
             
