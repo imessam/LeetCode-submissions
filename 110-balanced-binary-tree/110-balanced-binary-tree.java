@@ -14,24 +14,43 @@
  * }
  */
 class Solution {
+    HashMap<TreeNode,Boolean> dpBalanced = new HashMap<>();
+    HashMap<TreeNode,Integer> dpHeight = new HashMap<>();
+    
     public boolean isBalanced(TreeNode root) {
         
-        if(root == null)
-            return true;
-        if(root.left == null && root.right == null)
-            return true;
+        if(dpBalanced.containsKey(root))
+            return dpBalanced.get(root);
         
-        return isBalanced(root.left) && isBalanced(root.right) &&
-            Math.abs(getHeight(root.left)-getHeight(root.right)) <= 1;
+        boolean balanced = true;
+        
+        if(root == null)
+            balanced = true;
+        else if(root.left == null && root.right == null)
+            balanced = true;
+        else
+            balanced = isBalanced(root.left) && isBalanced(root.right) && Math.abs(getHeight(root.left)-getHeight(root.right)) <= 1;
+                    
+        
+        dpBalanced.put(root,balanced);
+        
+        return balanced;
         
     }
     
     public int getHeight(TreeNode root){
         
-        if(root == null)
-            return 0;
+        if(dpHeight.containsKey(root))
+            return dpHeight.get(root);
         
-        return 1+Math.max(getHeight(root.left),getHeight(root.right));
+        int height = 0;
+        
+        if(root != null)
+            height = 1+Math.max(getHeight(root.left),getHeight(root.right));
+        
+        dpHeight.put(root,height);
+        
+        return height;
         
     }
 }
