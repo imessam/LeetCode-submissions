@@ -16,7 +16,6 @@ class Solution:
             return int(first / second)
         
         for token in tokens:
-            # print(stack)
             if token in ["+","-","*","/"]:
                 digits = []
                 for _ in range(2):
