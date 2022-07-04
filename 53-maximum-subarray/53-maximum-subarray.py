@@ -1,8 +1,14 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         
+        localMax = nums[0]
+        globalMax = localMax
+        
         for i in range(1,len(nums)):
-            nums[i] = max(nums[i], nums[i-1] + nums[i])
-        return max(nums)
+            localMax = max(nums[i],localMax+nums[i])
+            globalMax = max(localMax,globalMax)
+        
+        return globalMax
+        
         
             
